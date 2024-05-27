@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace WebApplication1.Controllers;
 
@@ -42,7 +41,7 @@ public class WeatherForecastController : ControllerBase
 
 public class InputModel
 {
-    [JsonProperty(Required = Required.Always)]
+
     public string Name { get; set; }
 }
 
