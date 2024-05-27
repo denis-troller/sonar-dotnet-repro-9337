@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace WebApplication1.Controllers;
 
@@ -31,7 +32,7 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpPost("new")]
-    public IActionResult PostValue(InputModel model)
+    public IActionResult PostValue([FromBody] InputModel model)
     {
 
         return Ok();
@@ -41,7 +42,8 @@ public class WeatherForecastController : ControllerBase
 
 public class InputModel
 {
+    [JsonProperty(Required = Required.Always)]
+    public int Count { get; set; }
 
-    public string Name { get; set; }
 }
 
