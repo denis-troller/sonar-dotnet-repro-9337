@@ -1,5 +1,7 @@
+using cloudscribe.Web.Common.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Controllers;
 
@@ -44,6 +46,14 @@ public class InputModel
 {
     [JsonProperty(Required = Required.Always)]
     public int Count { get; set; }
+
+    [Range(1, long.MaxValue, ErrorMessage = "State or Province is required")]
+    public long StateOrProvinceId { get; set; }
+
+    public bool AgreementRequired { get; set; } = false; // if true then AgreeToTerms is required to be checked
+    [EnforceTrue("AgreementRequired", ErrorMessage = "You must agree to the terms of use.")]
+    public bool AgreeToTerms { get; set; } = false;
+
 
 }
 
